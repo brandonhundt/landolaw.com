@@ -34,11 +34,14 @@
 <body <?php body_class(); ?>>
 	<div id="page" class="hfeed site">
 		<header id="masthead" class="site-header" role="banner">
-			<h2 class="logo">
-				<a class="home-link" href="<?php echo esc_url( home_url( '/' ) ); ?>" title="<?php echo esc_attr( get_bloginfo( 'name', 'display' ) ); ?>" rel="home">
-					<img src="http://localhost:8888/landolaw.com/wp-content/themes/lando2013/images/logo_main.png" alt="<?php bloginfo( 'name' ); ?>" />
-				</a>
-			</h2>
+			<div class="container">	
+				<h2 class="logo">
+					<a class="home-link" href="<?php echo esc_url( home_url( '/' ) ); ?>" title="<?php echo esc_attr( get_bloginfo( 'name', 'display' ) ); ?>" rel="home">
+						<img src="/wp-content/themes/lando2013/images/logo_main.png" alt="<?php bloginfo( 'name' ); ?>" />
+					</a>
+				</h2>
+				<p id="phone" class="genericon genericon-phone">763-550-9892</p>
+			</div>
 			<div id="navbar" class="navbar">
 				<nav id="site-navigation" class="navigation main-navigation" role="navigation">
 					<h3 class="menu-toggle"><?php _e( 'Menu', 'twentythirteen' ); ?></h3>

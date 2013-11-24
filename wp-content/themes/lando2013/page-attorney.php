@@ -1,4 +1,8 @@
 <?php
+/*
+Template Name: Attorney Page
+*/
+
 /**
  * The template for displaying all pages
  *
@@ -21,13 +25,21 @@ get_header(); ?>
 
 				<article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
 					<header class="entry-header">
+						<h1 class="entry-title"><?php the_title(); ?></h1>
 						<?php if ( has_post_thumbnail() && ! post_password_required() ) : ?>
 						<div class="entry-thumbnail">
 							<?php the_post_thumbnail(); ?>
 						</div>
 						<?php endif; ?>
-
-						<h1 class="entry-title"><?php the_title(); ?></h1>
+						<div class="attorney-contact">
+							<p><strong>Contact Info:</strong></p>
+							<ul>
+								<li><span class="genericon genericon-phone"></span><?php the_field('phone_number'); ?></li>
+								<li><span class="genericon genericon-linkedin-alt"></span><a href="<?php the_field('linkedin_link'); ?>" title="LinkedIn">LinkedIn</a></li>
+								<li><span class="genericon genericon-mail"></span><a href="/?page_id=162" title="Send Message">Send Message</a></li>
+							</ul>
+						</div>
+						
 					</header><!-- .entry-header -->
 
 					<div class="entry-content">
