@@ -861,6 +861,7 @@ img.wp-smiley,
 .site-header #phone.genericon:before {
 	font: normal 1em/1.2em Genericons;
 	margin: 0 5px 0 0;
+	vertical-align: top;
 }
 
 .site-header .logo {width: 60%; float: left;}
@@ -2719,6 +2720,25 @@ footer.entry-meta {
 	display: block;
 	margin: -10px auto 0;
 }
+
+div.wpcf7 {
+	margin: 0;
+	padding: 4%;
+	width: 92%;
+	display: block;
+	background: #fff;
+	font-size: 80%;
+	line-height: 1.25em;
+}
+div.wpcf7 input,
+div.wpcf7 textarea {margin: 5px 0; border: 1px solid #bbb;}
+
+div.wpcf7 input:focus,
+div.wpcf7 textarea:focus,
+div.wpcf7 input:active,
+div.wpcf7 textarea:active {border: 1px solid #df8e26;}
+
+div.wpcf7 input.wpcf7-submit {border: none;}
 
 
 /**
