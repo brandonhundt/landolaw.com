@@ -20,12 +20,14 @@ class acf_field_google_map extends acf_field
 		$this->defaults = array(
 			'height'		=> '',
 			'center_lat'	=> '',
-			'center_lng'	=> ''
+			'center_lng'	=> '',
+			'zoom'			=> ''
 		);
 		$this->default_values = array(
 			'height'		=> '400',
 			'center_lat'	=> '-37.81411',
-			'center_lng'	=> '144.96328'
+			'center_lng'	=> '144.96328',
+			'zoom'			=> '14'
 		);
 		$this->l10n = array(
 			'locating'			=>	__("Locating",'acf'),
@@ -94,7 +96,8 @@ class acf_field_google_map extends acf_field
 		$keys = array( 
 			'data-id'	=> 'id', 
 			'data-lat'	=> 'center_lat',
-			'data-lng'	=> 'center_lng'
+			'data-lng'	=> 'center_lng',
+			'data-zoom'	=> 'zoom'
 		);
 		
 		foreach( $keys as $k => $v )
@@ -193,6 +196,24 @@ class acf_field_google_map extends acf_field
 </tr>
 <tr class="field_option field_option_<?php echo $this->name; ?>">
 	<td class="label">
+		<label><?php _e("Zoom",'acf'); ?></label>
+		<p class="description"><?php _e('Set the initial zoom level','acf'); ?></p>
+	</td>
+	<td>
+		<?php 
+		
+		do_action('acf/create_field', array(
+			'type'			=> 'number',
+			'name'			=> 'fields['.$key.'][zoom]',
+			'value'			=> $field['zoom'],
+			'placeholder'	=> $this->default_values['zoom']
+		));
+		
+		?>
+	</td>
+</tr>
+<tr class="field_option field_option_<?php echo $this->name; ?>">
+	<td class="label">
 		<label><?php _e("Height",'acf'); ?></label>
 		<p class="description"><?php _e('Customise the map height','acf'); ?></p>
 	</td>
@@ -213,6 +234,83 @@ class acf_field_google_map extends acf_field
 		<?php
 		
 	}
+	
+	
+	/*
+	*  update_value()
+	*
+	*  This filter is appied to the $value before it is updated in the db
+	*
+	*  @type	filter
+	*  @since	3.6
+	*  @date	23/01/13
+	*
+	*  @param	$value - the value which will be saved in the database
+	*  @param	$post_id - the $post_id of which the value will be saved
+	*  @param	$field - the field array holding all the field options
+	*
+	*  @return	$value - the modified value
+	*/
+	
+	function update_value( $value, $post_id, $field ) {
+	
+		if( empty($value) || empty($value['lat']) || empty($value['lng']) ) {
+			
+			return false;
+			
+		}
+		
+		
+		// return
+		return $value;
+	}
+	
+	
+	/*
+   	*  input_admin_footer
+   	*
+   	*  description
+   	*
+   	*  @type	function
+   	*  @date	6/03/2014
+   	*  @since	5.0.0
+   	*
+   	*  @param	$post_id (int)
+   	*  @return	$post_id (int)
+   	*/
+   	
+   	function input_admin_head() {
+	   	
+   		add_action( 'admin_footer', array( $this, 'input_admin_footer') );
+   		
+   	}
+   	
+   	function input_admin_footer() {
+	   	
+	   	// vars
+	   	$api = array(
+			'libraries'		=> 'places',
+			'key'			=> '',
+			'client'		=> ''
+	   	);
+	   	
+	   	
+	   	// filter
+	   	$api = apply_filters('acf/fields/google_map/api', $api);
+	   	
+	   	
+	   	// remove empty
+	   	if( empty($api['key']) ) unset($api['key']);
+	   	if( empty($api['client']) ) unset($api['client']);
+	   	
+	   	
+?>
+<script type="text/javascript">
+acf.fields.google_map.api = <?php echo json_encode($api); ?>;
+</script>
+<?php
+	
+   	}
 }
 
 new acf_field_google_map();
