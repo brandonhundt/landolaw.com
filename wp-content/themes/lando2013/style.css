@@ -1,7 +1,7 @@
 /*
 Theme Name: Lanners & Olson 2013
 Theme URI: http://wordpress.org/themes/twentythirteen
-Author: Brandon Hundt 
+Author: Brandon Hundt
 Author URI: http://brandonhundt.com
 Description: Based on the WP 2013 customized for lanners and olson
 */
@@ -592,7 +592,7 @@ button,
 input[type="submit"],
 input[type="button"],
 input[type="reset"] {
-	background: #df8e26; 
+	background: #df8e26;
 	border: 1px solid #fff;
 	border-radius: 2px;
 	color: #fff;
@@ -768,16 +768,41 @@ img.wp-smiley,
 
 .site-main {
 	position: relative;
-
 }
 
-.site-main .sidebar-container {
+@media (min-width: 961px) {
+	.sidebar .site-main {
+		display: flex;
+		max-width: 1080px;
+		margin: 0 auto;
+	}
+	.sidebar .site-main .sidebar-container{
+		flex: 1;
+		order: 2;
+  	flex-basis: auto;
+ 	 	width: 300px;
+ 	 	margin: 40px 0 0;
+	}
+	.sidebar .site-main .content-area {
+		padding: 0 20px;
+	}
+
+	.home.sidebar .site-main {
+		display: block;
+		max-width: 100%;
+	}
+}
+
+
+
+
+/*.site-main .sidebar-container {
 	height: 0;
 	position: absolute;
 	top: 40px;
 	width: 100%;
 	z-index: 1;
-}
+}*/
 
 .site-main .sidebar-inner {
 	margin: 0 auto;
@@ -792,6 +817,9 @@ img.wp-smiley,
 
  #home-top {
  	border-bottom: 1px solid #d5d5c6;
+ 	max-width: 1080px;
+  margin: 0 auto;
+  padding: 0;
  }
 
 #home-top .home-left {
@@ -1048,16 +1076,16 @@ ul.nav-menu li:hover > ul,
 .entry-summary,
 .entry-meta {
 	margin: 0 auto;
-	max-width: 604px;
+	/*max-width: 604px;*/
 	width: 100%;
 }
-.sidebar .entry-header,
+/*.sidebar .entry-header,
 .sidebar .entry-content,
 .sidebar .entry-summary,
 .sidebar .entry-meta {
 	max-width: 1080px;
 	padding: 0 376px 0 20px;
-}
+}*/
 .home.sidebar .entry-content {
 	padding: 0 20px;
 }
@@ -2453,7 +2481,7 @@ footer.entry-meta {
 
 }
 .site-main .widget-area #menu-primary-menu-1 li.current-menu-item.menu-item-has-children a,
-.site-main .widget-area #menu-primary-menu-1 li.current-menu-ancestor a {	
+.site-main .widget-area #menu-primary-menu-1 li.current-menu-ancestor a {
 	color: #306880;
 	border-bottom: 1px solid #eee;
 	padding: 0 0 3px;
@@ -2465,15 +2493,16 @@ footer.entry-meta {
     -moz-transition: color 0.2s ease;
     -o-transition: color 0.2s ease;
 }
-.site-main .widget-area #menu-primary-menu-1 li.current-menu-item.menu-item-has-children ul.sub-menu li, 
+.site-main .widget-area #menu-primary-menu-1 li.current-menu-item.menu-item-has-children ul.sub-menu li,
 .site-main .widget-area #menu-primary-menu-1 li.current-menu-ancestor ul.sub-menu li {
-	font-size: 18px;
-	margin: 0 0 3px;
+	font-size: 16px;
+	margin: 0 0 10px;
 	font-family: 'Source Sans Pro', sans-serif;
 	padding: 0;
 	border: none;
-} 
-.site-main .widget-area #menu-primary-menu-1 li.current-menu-item.menu-item-has-children ul.sub-menu li a, 
+	line-height: 24px;
+}
+.site-main .widget-area #menu-primary-menu-1 li.current-menu-item.menu-item-has-children ul.sub-menu li a,
 .site-main .widget-area #menu-primary-menu-1 li.current-menu-ancestor ul.sub-menu li a {
 	color: #df8e26;
 	border: none;
@@ -2505,20 +2534,52 @@ footer.entry-meta {
 
 .home article {padding: 30px 0;}
 
-#home-bot .widget,
-#home-mid .widget {
+#home-bot .widget {
 	background: none;
 	width: 50%;
 	display: inline;
 	float: left;
 	margin: 0;
 }
-#home-mid .widget {width: 25%;}
+
+#home-mid .entry-content {
+	display: flex;
+	flex-wrap: wrap;
+	max-width: 1080px;
+ 	margin: 0 auto;
+ 	border: none;
+}
+
+#home-mid .widget {
+	background: none;
+	width: 100%;
+	flex: 1;
+	margin: 0 0 15px;
+	padding: 0;
+}
+
+@media (min-width: 600px) {
+	#home-mid .entry-content .widget {
+		flex-basis: 48%;
+		margin: 0px 1% 15px;
+	}
+}
+
+@media (min-width: 999px) {
+	#home-mid .entry-content aside.widget {
+		flex-basis: 23%;
+	}
+}
 
 .widget .widget-title {
 	font-weight: 500;
 	margin: 0 0 10px;
 	border-bottom: 1px solid #eee;
+}
+
+#home-bot .entry-content {
+	max-width: 1080px;
+	margin: 0 auto;
 }
 
 #home-bot .widget .widget-title {
@@ -2559,7 +2620,7 @@ footer.entry-meta {
 	font-size: 90px;
 	color: #306880;
 	font-family: 'Neuton', serif;
-} 
+}
 
 .widget ul,
 .widget ol {
@@ -2809,7 +2870,6 @@ div.wpcf7 input.wpcf7-submit {border: none;}
 	#home-bot .widget {
 		width: 100%;
 	}
-	#home-mid .widget {width: 50%;}
 	#home-top .home-left,
 	#home-top .home-right {
 		display: block;
@@ -2970,8 +3030,6 @@ div.wpcf7 input.wpcf7-submit {border: none;}
 	#content .format-status .entry-met {
 		padding-left: 35px;
 	}
-
-	#home-mid .widget {width: 100%;}
 
 	.site-header #phone {
 		font-size: 1em;
