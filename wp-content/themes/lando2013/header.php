@@ -40,7 +40,12 @@
 						<img src="/wp-content/themes/lando2013/images/logo_main.png" alt="<?php bloginfo( 'name' ); ?>" />
 					</a>
 				</h2>
-				<p id="phone" class="genericon genericon-phone">763-550-9892</p>
+				<ul class="contact-links">
+				<li class="social"><a href="https://www.facebook.com/pages/Lanners-Olson-PA/159223630764507"><span class="genericon genericon-facebook" aria-label="Facebook"></span></a></li>
+				<li class="social"><a href="https://twitter.com/lannersolsonpa"><span class="genericon genericon-twitter" aria-label="Twitter"></span></a></li>
+				<li class="social"><a href="https://www.linkedin.com/company/16220607/"><span class="genericon genericon-linkedin" aria-label="LinkedIn"></span></a></li>
+				<li class="phone" class="genericon genericon-phone"> 763-550-9892</li>
+				</ul>
 			</div>
 			<div id="navbar" class="navbar">
 				<nav id="site-navigation" class="navigation main-navigation" role="navigation">
